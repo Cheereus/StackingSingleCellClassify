@@ -18,6 +18,10 @@ Get color list for drawing based on labels.
 
 Read data from `.mat` file.
 
+#### read_from_csv(filePath)
+
+Read data from `.csv` file.
+
 ----
 
 ### DimensionReduction.py
@@ -26,8 +30,12 @@ Read data from `.mat` file.
 
 Get t-SNE result from data.
 
+#### get_pca(data, dim)
+
+Get PCA results from data.
+
 ----
 
-### examples.py
+### examples_***.py
 
 Welcome to run the examples to know more!
