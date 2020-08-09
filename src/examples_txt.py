@@ -2,13 +2,13 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-09 14:58:49
+LastEditTime: 2020-08-09 17:03:58
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
 from ReadData import read_from_txt
 from DimensionReduction import t_SNE, get_pca
-from Utils import get_color
+from Utils import get_color, draw_scatter
 import numpy as np
 
 # read labels
@@ -23,7 +23,7 @@ print(X.shape)
 
 # dimenison reduction 
 # t-SNE
-dim_data = t_SNE(X, perp=50, with_normalize=True)
+dim_data = t_SNE(X, perp=5, with_normalize=True)
 
 # PCA
 # dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
@@ -36,6 +36,4 @@ y = [i[1] for i in dim_data]
 colors = get_color(labels)
 
 # plot
-plt.figure(figsize=(15,15))
-plt.scatter(x, y, c=colors, marker='o', linewidths=1)
-plt.show()
+draw_scatter(x, y, labels, colors)

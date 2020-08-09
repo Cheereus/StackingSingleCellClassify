@@ -2,13 +2,13 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-09 16:05:19
+LastEditTime: 2020-08-09 16:57:17
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
 from ReadData import read_from_csv
 from DimensionReduction import t_SNE, get_pca
-from Utils import get_color
+from Utils import get_color, draw_scatter
 import numpy as np
 
 # read data
@@ -22,7 +22,7 @@ labels = [i.partition('#')[0] for i in labels]
 
 # dimenison reduction 
 # t-SNE
-dim_data = t_SNE(X, perp=5, with_normalize=True)
+dim_data = t_SNE(X, perp=40, with_normalize=True)
 
 # PCA
 # dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
@@ -37,6 +37,4 @@ default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'k']
 colors = get_color(labels)
 
 # plot
-plt.figure(figsize=(15,15))
-plt.scatter(x, y, c=colors)
-plt.show()
+draw_scatter(x, y, labels, colors)
