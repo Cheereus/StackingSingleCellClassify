@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-09 10:01:39
+LastEditTime: 2020-08-09 16:05:19
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
@@ -19,11 +19,10 @@ print(X.shape)
 
 labels = data.T[:90,0]
 labels = [i.partition('#')[0] for i in labels]
-print(labels)
 
 # dimenison reduction 
 # t-SNE
-dim_data = t_SNE(X, perp=40, with_normalize=True)
+dim_data = t_SNE(X, perp=5, with_normalize=True)
 
 # PCA
 # dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
@@ -35,8 +34,7 @@ y = [i[1] for i in dim_data]
 
 # get color list based on labels
 default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'k']
-colors = get_color(labels,default_colors)
-print(colors)
+colors = get_color(labels)
 
 # plot
 plt.figure(figsize=(15,15))

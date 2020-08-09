@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 16:38:35
-LastEditTime: 2020-08-09 08:41:53
+LastEditTime: 2020-08-09 15:59:57
 LastEditors: CheeReus_11
 '''
 import numpy as np
@@ -12,6 +12,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler, Normalizer
 
 # t-SNE
 def t_SNE(data, dim=2, perp=30, with_normalize=False):
+    
     if with_normalize:
         prepress = Normalizer()
         data = prepress.fit_transform(data)
@@ -19,8 +20,10 @@ def t_SNE(data, dim=2, perp=30, with_normalize=False):
     data = np.array(data)
     tsne = TSNE(n_components=dim, init='pca', perplexity=perp, method='exact')
     tsne.fit_transform(data)
+    
     return tsne.embedding_
 
+# PCA
 def get_pca(data, c=3, with_normalize=False):
 
     if with_normalize:
