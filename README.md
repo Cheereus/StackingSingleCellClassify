@@ -2,6 +2,30 @@
 
 My ideas and implements.
 
+## Files and functions
+
+### `ReadData.py`
+
+Read data from `.mat`, `.csv` and `.txt` files.
+
+### `Utils.py`
+
+Some tools including:
+
+* Get colors for painting base on labels.
+* Scatter with displaying labels.
+
+### `DimensionReduction.py`
+
+Methods of dimension reduction including:
+
+* t-SNE
+* PCA
+
+### `Examples_***.py`
+
+Examples for processing.
+
 ## Xin dataset (human islet) 1600 samples using t-SNE
 
 perplexity = 50
