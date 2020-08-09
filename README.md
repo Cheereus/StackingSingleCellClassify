@@ -1,6 +1,6 @@
 # StackingSingleCellClassify
 
-My ideas and implements.
+Comprehensive single-cell clustering implementations by python
 
 ## Files and functions
 
