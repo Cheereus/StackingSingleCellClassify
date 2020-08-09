@@ -39,3 +39,13 @@ Get PCA results from data.
 ### examples_***.py
 
 Welcome to run the examples to know more!
+
+### xin dataset (human islet) 1600 samples
+
+perplexity = 50
+
+![图片](examples/xin_human_islet_perp50.png)
+
+perplexity = 5
+
+![图片](examples/xin_human_islet_perp5.png)
