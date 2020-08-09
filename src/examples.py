@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-09 08:48:30
+LastEditTime: 2020-08-09 08:55:40
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
@@ -30,7 +30,8 @@ labels = [i[0][0] for i in labels]
 print(labels)
 
 # get color list based on labels
-colors = get_color(labels, ['c', 'b', 'g', 'r', 'm', 'y', 'k'])
+default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'k']
+colors = get_color(labels, default_colors)
 print(colors)
 
 # plot
