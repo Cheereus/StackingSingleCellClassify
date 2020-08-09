@@ -44,11 +44,11 @@ Welcome to run the examples to know more!
 
 perplexity = 50
 
-![图片](examples/xin_human_islet_perp50.png)
+![图片](pics/xin_human_islet_perp50.png)
 
 perplexity = 5
 
-![图片](examples/xin_human_islet_perp5.png)
+![图片](pics/xin_human_islet_perp5.png)
 
 This dataset file is too large to upload, please download it from:
 
