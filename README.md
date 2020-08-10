@@ -94,15 +94,15 @@ Yan, L. et al. Single-cell RNA-Seq profiling of human preimplantation embryos an
 
 ## Corr datasets
 
-Human islet dataset / 60 samples / perplexity = 5
+### Human islet dataset / 60 samples / perplexity = 5
 
 人胰岛数据集 / 60 样本 / 困惑度 = 5
 
 ![图片](pics/corr_islet_perp5.png)
 
-Human islet dataset / perplexity = 5 / k-NN
+k-NN prediction:
 
-人胰岛数据集 / 困惑度 = 5 / 使用 k-NN 进行训练和自预测
+使用 k-NN 进行训练和自预测:
 
 ![图片](pics/corr_islet_perp5_knn.png)
 
@@ -110,7 +110,7 @@ Human islet dataset / perplexity = 5 / k-NN
 
 Accuracy = 0.9667 (58/60) The class 'delta' (2 samples) are totally missed.
 
-Human cancer dataset / 33 samples / perplexity = 5
+### Human cancer dataset / 33 samples / perplexity = 5
 
 人癌细胞数据集 / 33 样本 / 困惑度 = 5
 
