@@ -24,7 +24,6 @@ Some tools including:
 
 * 根据标签获得颜色值，用于作图
 * 制作带有标签图例的散点图
-* 准确率计算
 
 ### `DimensionReduction.py`
 
