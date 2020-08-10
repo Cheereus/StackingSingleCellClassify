@@ -22,6 +22,13 @@ Methods of dimension reduction including:
 * t-SNE
 * PCA
 
+### `Clustering.py`
+
+Clustering methods including:
+
+* k-means
+* k-NN
+
 ### `Examples_***.py`
 
 Examples for processing.
@@ -61,6 +68,12 @@ Yan, L. et al. Single-cell RNA-Seq profiling of human preimplantation embryos an
 Human islet dataset / 60 samples / perplexity = 5
 
 ![图片](pics/corr_islet_perp5.png)
+
+Human islet dataset / perplexity = 5 / k-NN
+
+![图片](pics/corr_islet_perp5_knn.png)
+
+Accuracy = 0.9667 (58/60) The class 'delta' (2 samples) are totally missed.
 
 Human cancer dataset / 33 samples / perplexity = 5
 
