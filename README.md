@@ -52,7 +52,7 @@ Clustering methods including:
 * k 最近邻法
 * 层次聚类
 
-### `Examples_***.py`
+### `examples_***.py`
 
 Examples for processing.
 
