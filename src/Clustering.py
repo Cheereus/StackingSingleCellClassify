@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-10 07:33:24
-LastEditTime: 2020-08-10 15:04:57
+LastEditTime: 2020-08-10 15:13:44
 LastEditors: CheeReus_11
 '''
 import numpy as np
@@ -28,7 +28,6 @@ def hca(X, k=None):
 # dendogram for hca
 def hca_dendrogram(model):
     plt.figure(figsize=(50, 10))
-    # Plot the corresponding dendrogram
     dendrogram(model, leaf_rotation=90., leaf_font_size=8)
     plt.show()
 

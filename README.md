@@ -44,11 +44,13 @@ Clustering methods including:
 
 * k-means
 * k-NN
+* hca
 
 包括一些聚类方法：
 
 * k 均值聚类
 * k 最近邻法
+* 层次聚类
 
 ### `Examples_***.py`
 
@@ -109,6 +111,18 @@ k-NN prediction:
 准确率 0.9667 (58/60) 'delta' 类的两个样本都分类错误
 
 Accuracy = 0.9667 (58/60) The class 'delta' (2 samples) are totally missed.
+
+hierarchy dendogram:
+
+使用层次聚类进行分类：
+
+![图片](pics/corr_islet_perp5_hca_dendogram.png)
+
+scatter for hierarchy cluster result:
+
+层次聚类结果散点图：
+
+![图片](pics/corr_islet_perp5_hca.png)
 
 ### Human cancer dataset / 33 samples / perplexity = 5
 
