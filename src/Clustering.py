@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-10 07:33:24
-LastEditTime: 2020-08-10 15:13:44
+LastEditTime: 2020-08-10 16:38:45
 LastEditors: CheeReus_11
 '''
 import numpy as np
@@ -31,6 +31,7 @@ def hca_dendrogram(model):
     dendrogram(model, leaf_rotation=90., leaf_font_size=8)
     plt.show()
 
+# labels of hca
 def hca_labels(model, n_clusters):
     labels = fcluster(model, n_clusters, criterion='maxclust')
     return labels

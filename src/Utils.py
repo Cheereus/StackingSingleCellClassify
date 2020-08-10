@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:42:59
-LastEditTime: 2020-08-10 08:33:20
+LastEditTime: 2020-08-10 16:38:59
 LastEditors: CheeReus_11
 '''
 
@@ -53,14 +53,3 @@ def draw_scatter(x, y, labels, colors):
 
     plt.legend(loc='best')
     plt.show()
-
-def accuracy(predict_labels, true_labels):
-    if len(predict_labels) != len(true_labels):
-        print('Label Length Error')
-        return 0
-    label_length = len(predict_labels)
-    correct = 0
-    for i in range(label_length):
-        if predict_labels[i] == true_labels[i]:
-            correct += 1
-    return correct / label_length

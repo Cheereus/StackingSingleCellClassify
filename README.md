@@ -52,6 +52,22 @@ Clustering methods including:
 * k 最近邻法
 * 层次聚类
 
+### `Metrics.py`
+
+Evaluation metrics including:
+
+* accuracy
+* adjusted rand score
+* normalized mutual info score
+* weighted F1 score
+
+包括一些评价指标：
+
+* 准确率
+* 调整兰德系数 ARI
+* 标准化互信息 NMI
+* 加权 F1 值
+
 ### `examples_***.py`
 
 Examples for processing.

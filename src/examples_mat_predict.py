@@ -2,14 +2,15 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-10 11:03:10
+LastEditTime: 2020-08-10 16:49:37
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
 from ReadData import read_from_mat
 from DimensionReduction import t_SNE, get_pca
-from Utils import get_color, draw_scatter, accuracy
+from Utils import get_color, draw_scatter
 from Clustering import k_means, knn
+from Metrics import ARI, accuracy, NMI, F1
 
 # read data
 X = read_from_mat('data/corr/A_islet.mat')['A']
@@ -41,4 +42,7 @@ default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'k']
 colors = get_color(labels_predict, default_colors)
 
 # draw
+print('ARI:', ARI(labels, labels_predict))
+print('NMI:', NMI(labels, labels_predict))
+print('F1:', F1(labels, labels_predict))
 draw_scatter(x, y, labels_predict, colors)
