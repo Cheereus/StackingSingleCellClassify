@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-09 16:57:17
+LastEditTime: 2020-08-10 10:58:22
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
@@ -22,11 +22,11 @@ labels = [i.partition('#')[0] for i in labels]
 
 # dimenison reduction 
 # t-SNE
-dim_data = t_SNE(X, perp=40, with_normalize=True)
+# dim_data = t_SNE(X, perp=50, with_normalize=True)
 
 # PCA
-# dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
-# print(ratio)
+dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
+print(ratio)
 
 # get two coordinates
 x = [i[0] for i in dim_data]

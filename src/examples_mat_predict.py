@@ -2,7 +2,7 @@
 Description: 
 Author: CheeReus_11
 Date: 2020-08-08 17:17:57
-LastEditTime: 2020-08-10 08:34:15
+LastEditTime: 2020-08-10 11:03:10
 LastEditors: CheeReus_11
 '''
 import matplotlib.pyplot as plt
@@ -31,7 +31,7 @@ labels = [i[0][0] for i in labels]
 # print(labels)
 
 # knn training and predict
-model = knn(dim_data, labels, 6)
+model = knn(dim_data, labels, 3)
 labels_predict = model.predict(dim_data)
 
 print('Accuracy:', accuracy(labels_predict, labels))
