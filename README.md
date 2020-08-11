@@ -51,6 +51,18 @@ Clustering methods including:
 * k 最近邻法
 * 层次聚类
 
+### `SupportVectorMachine.py`
+
+Support vector machine implements including:
+
+* SVM model training
+* cross validation
+
+包括一些支持向量机的实现：
+
+* SVM 模型的训练和预测
+* 交叉验证
+
 ### `Metrics.py`
 
 Evaluation metrics including:
