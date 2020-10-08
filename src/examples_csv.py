@@ -14,7 +14,7 @@ import numpy as np
 # read data
 data = read_from_csv('data/yang_human_embryo.csv')
 
-X = data.T[:90,1:]
+X = data.T[:90, 1:]
 print(X.shape)
 
 labels = data.T[:90,0]
