@@ -26,11 +26,11 @@ dim_data = t_SNE(X, perp=5, with_normalize=True)
 x = [i[0] for i in dim_data]
 y = [i[1] for i in dim_data]
 #
-labels_predict = SpectralClustering(n_clusters=7, affinity='nearest_neighbors').fit_predict(X)
+labels_predict = SpectralClustering(n_clusters=6, affinity='nearest_neighbors').fit_predict(X)
 print(labels_predict)
 
 # get color list based on labels
-default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'k']
+default_colors = ['c', 'b', 'g', 'r', 'm', 'y']
 colors = get_color(labels_predict)
 
 # plot

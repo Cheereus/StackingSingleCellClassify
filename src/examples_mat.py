@@ -31,7 +31,7 @@ labels = [i[0][0] for i in labels]
 print(len(labels))
 
 # get color list based on labels
-default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'k']
+default_colors = ['c', 'b', 'g', 'r', 'm', 'y']
 colors = get_color(labels, default_colors)
 print(colors)
 

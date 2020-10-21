@@ -22,11 +22,11 @@ labels = [i.partition('#')[0] for i in labels]
 
 # dimenison reduction 
 # t-SNE
-# dim_data = t_SNE(X, perp=50, with_normalize=True)
+dim_data = t_SNE(X, perp=25, with_normalize=True)
 
 # PCA
-dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
-print(ratio)
+# dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
+# print(ratio)
 
 # get two coordinates
 x = [i[0] for i in dim_data]

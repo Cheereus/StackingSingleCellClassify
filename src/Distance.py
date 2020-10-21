@@ -1,6 +1,7 @@
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.metrics import mutual_info_score
 import numpy as np
+import math
 
 
 # 欧式距离相似度函数，输入矩阵以行为样本
@@ -24,11 +25,24 @@ def SimMutual(X):
 
     n_sample, n_feature = X.shape
     sim_mutual = np.zeros((n_sample, n_sample))
+    max_mi = 0
 
     for i in range(n_sample):
         for j in range(n_sample):
-            sim_mutual[i][j] = mutual_info_score(X[i], X[j])
-            sim_mutual[j][i] = mutual_info_score(X[i], X[j])
+            mu = 0
+            if i != j:
+                c1 = np.cov(X[i])
+                c2 = np.cov(X[j])
+                c3 = np.linalg.det(np.cov(X[i], X[j]))
+                mu = 0.5 * math.log(c1 * c2 / c3)
+                if mu > max_mi:
+                    max_mi = mu
+            sim_mutual[i][j] = mu
+            sim_mutual[j][i] = mu
+
+    sim_mutual = sim_mutual / max_mi
+    for i in range(n_sample):
+        sim_mutual[i][i] = 1
 
     return sim_mutual
 
@@ -61,3 +75,4 @@ def ConsistentMatrix(relevance, m):
         S = S + rel
     S = np.ones((m, m)) - S / m
     return S
+
