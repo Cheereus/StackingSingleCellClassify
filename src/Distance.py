@@ -9,6 +9,7 @@ def SimDistance(X):
 
     euc_dis = euclidean_distances(X)
     sim_dis = [1 / (1 + i) for i in euc_dis]
+    print('SimDistance computed')
     return np.array(sim_dis)
 
 
@@ -17,6 +18,7 @@ def SimCorrelation(X):
 
     corr = np.corrcoef(X)
     sim_corr = [(1 + i) / 2 for i in corr]
+    print('SimCorrelation computed')
     return np.array(sim_corr)
 
 
@@ -44,12 +46,14 @@ def SimMutual(X):
     for i in range(n_sample):
         sim_mutual[i][i] = 1
 
+    print('SimMutual computed')
     return sim_mutual
 
 
 # 整合的相似性度量函数
 def Similarity(X, alpha, beta, gamma):
 
+    print('similarity computed')
     return alpha * SimDistance(X) + beta * SimCorrelation(X) + gamma * SimMutual(X)
 
 

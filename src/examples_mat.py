@@ -10,9 +10,10 @@ from ReadData import read_from_mat
 from DimensionReduction import t_SNE, get_pca
 from Utils import get_color, draw_scatter
 from Clustering import k_means
+import joblib
 
 # read data
-X = read_from_mat('data/corr/A_islet.mat')['A']
+X = read_from_mat('data/corr/A_mouse.mat')['A']
 
 # dimenison reduction 
 # t-SNE
@@ -26,13 +27,15 @@ x = [i[0] for i in dim_data]
 y = [i[1] for i in dim_data]
 
 # read labels
-labels = read_from_mat('data/corr/Labels_islet.mat')['Labels']
+labels = read_from_mat('data/corr/Labels_mouse.mat')['Labels']
 labels = [i[0][0] for i in labels]
-print(len(labels))
+print(X.shape)
+
+joblib.dump(X, 'datasets/Biase_mouse.pkl')
+joblib.dump(labels, 'datasets/Biase_mouse_labels.pkl')
 
 # get color list based on labels
-default_colors = ['c', 'b', 'g', 'r', 'm', 'y']
-colors = get_color(labels, default_colors)
+colors = get_color(labels)
 print(colors)
 
 # draw
