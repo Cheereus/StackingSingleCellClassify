@@ -37,12 +37,15 @@ def SimMutual(X):
                 c1 = np.cov(X[i])
                 c2 = np.cov(X[j])
                 c3 = np.linalg.det(np.cov(X[i], X[j]))
+                if c3 < 0:
+                    c3 = -c3
                 mu = 0.5 * math.log(c1 * c2 / c3)
                 if mu > max_mi:
                     max_mi = mu
             sim_mutual[i][j] = mu
             sim_mutual[j][i] = mu
 
+    print(sim_mutual)
     sim_mutual = sim_mutual / max_mi
     for i in range(n_sample):
         sim_mutual[i][i] = 1

@@ -3,7 +3,7 @@ import datetime
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-from Distance import SimDistance, SimCorrelation, SimMutual, Similarity
+from Distance import SimDistance, SimCorrelation, SimMutual, Similarity, RelevanceMatrix
 from DimensionReduction import t_SNE, get_pca
 import numpy as np
 from Clustering import hca, hca_dendrogram, hca_labels, k_means
@@ -33,8 +33,21 @@ def calc_and_output(sim):
     labels_predict = model.fit(sim).labels_
     # labels_predict = knn_model.predict(np.max(sim) - sim)
     print('ARI:', ARI(labels, labels_predict))
-    return ARI(labels, labels_predict)
+    return labels_predict, ARI(labels, labels_predict)
 
+
+sim_data = Similarity(dim_data, alpha=0.3, beta=0.6)
+pred, ari = calc_and_output(sim_data)
+rel = RelevanceMatrix(pred)
+sim_next = 0.6 * sim_data + 0.3 * rel
+l0 = len(sim_next[sim_next != 0])
+while l0 != 0:
+    print(l0)
+    sim_data = Similarity(sim_next, alpha=0.3, beta=0.6)
+    pred, ari = calc_and_output(sim_data)
+    rel = RelevanceMatrix(pred)
+    sim_next = 0.6 * sim_data + 0.3 * rel
+    l0 = len(sim_next[sim_next > 0])
 
 # calc_and_output(sim_dis)
 # calc_and_output(sim_cor)
@@ -45,9 +58,12 @@ y = []
 z = []
 t = 0
 
-for alpha in np.arange(0, 1.01, 0.01):
 
-    for beta in np.arange(0, 1.01 - alpha, 0.01):
+
+"""
+for alpha in np.arange(0, 1.05, 0.05):
+
+    for beta in np.arange(0, 1.05 - alpha, 0.05):
 
         sim_data = Similarity(dim_data, alpha=alpha, beta=beta)
         ari = calc_and_output(sim_data)
@@ -56,7 +72,7 @@ for alpha in np.arange(0, 1.01, 0.01):
         z.append(ari)
         t += 1
         print(t)
-
+        
 fig = plt.figure()
 ax = Axes3D(fig)
 ax.plot_trisurf(x, y, z, cmap='rainbow')
@@ -65,3 +81,4 @@ ax.set_ylabel('beta')
 ax.set_xlabel('alpha')
 
 plt.show()
+"""
