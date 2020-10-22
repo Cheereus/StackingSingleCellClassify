@@ -2,6 +2,7 @@ from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.metrics import mutual_info_score
 import numpy as np
 import math
+import datetime
 
 
 # 欧式距离相似度函数，输入矩阵以行为样本
@@ -9,7 +10,7 @@ def SimDistance(X):
 
     euc_dis = euclidean_distances(X)
     sim_dis = [1 / (1 + i) for i in euc_dis]
-    print('SimDistance computed')
+    # print('SimDistance computed', datetime.datetime.now())
     return np.array(sim_dis)
 
 
@@ -18,7 +19,7 @@ def SimCorrelation(X):
 
     corr = np.corrcoef(X)
     sim_corr = [(1 + i) / 2 for i in corr]
-    print('SimCorrelation computed')
+    # print('SimCorrelation computed', datetime.datetime.now())
     return np.array(sim_corr)
 
 
@@ -30,7 +31,7 @@ def SimMutual(X):
     max_mi = 0
 
     for i in range(n_sample):
-        for j in range(n_sample):
+        for j in range(i, n_sample):
             mu = 0
             if i != j:
                 c1 = np.cov(X[i])
@@ -46,14 +47,16 @@ def SimMutual(X):
     for i in range(n_sample):
         sim_mutual[i][i] = 1
 
-    print('SimMutual computed')
+    # print('SimMutual computed', datetime.datetime.now())
     return sim_mutual
 
 
 # 整合的相似性度量函数
-def Similarity(X, alpha, beta, gamma):
+def Similarity(X, alpha, beta, gamma=None):
 
-    print('similarity computed')
+    if gamma is None:
+        gamma = 1 - alpha - beta
+    # print('Similarity computed', datetime.datetime.now())
     return alpha * SimDistance(X) + beta * SimCorrelation(X) + gamma * SimMutual(X)
 
 
