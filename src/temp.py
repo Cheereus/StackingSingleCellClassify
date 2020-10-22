@@ -1,10 +1,11 @@
 from Distance import SimDistance, SimCorrelation, SimMutual, Similarity
 from ReadData import read_from_csv
 import numpy as np
-from Clustering import hca, hca_dendrogram, hca_labels
+from Clustering import hca, hca_dendrogram, hca_labels, k_means
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 from Metrics import ARI, accuracy
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.cluster import AgglomerativeClustering
 
 # read data
 data = read_from_csv('data/yang_human_embryo.csv')
@@ -19,17 +20,15 @@ print(X.shape)
 sim_dis = SimDistance(X)
 sim_cor = SimCorrelation(X)
 sim_mu = SimMutual(X)
-sim_data = Similarity(X, alpha=0.1, beta=0.9, gamma=0)
+sim_data = Similarity(X, alpha=0.8, beta=0.1, gamma=0.1)
 
 
 def calc_and_output(sim):
-    # model = hca(sim)
-    # labels_predict = hca_labels(model, 6)
-    knn_model = KNeighborsClassifier(n_neighbors=6)
-    knn_model.fit(sim, labels)
-    labels_predict = knn_model.predict(sim)
-
-    print('accuracy:', accuracy(labels, labels_predict))
+    labels_predict = k_means(sim, 6)
+    #knn_model = KNeighborsClassifier(n_neighbors=6, metric='precomputed')
+    #knn_model.fit(np.max(sim) - sim, labels)
+    #labels_predict = knn_model.predict(np.max(sim) - sim)
+    print('ARI:', ARI(labels, labels_predict))
 
 
 calc_and_output(sim_dis)

@@ -10,9 +10,10 @@ from ReadData import read_from_txt
 from DimensionReduction import t_SNE, get_pca
 from Utils import get_color, draw_scatter
 import numpy as np
+import joblib
 
 # read labels
-labels = read_from_txt('data/human_islet_labels.txt')
+labels = read_from_txt('data/human_islets_labels.txt')
 labels = [i[-1] for i in labels][1:]
 print(len(labels))
 
@@ -20,8 +21,9 @@ print(len(labels))
 X = read_from_txt('data/human_islets.txt')
 X = X.T[1:, 1:].astype(np.float64)
 print(X.shape)
-
-# dimenison reduction 
+joblib.dump(X, 'datasets/human_islets.pkl')
+joblib.dump(labels, 'datasets/human_islets_labels.pkl')
+# dimenison reduction
 # t-SNE
 dim_data = t_SNE(X, perp=5, with_normalize=True)
 
