@@ -17,7 +17,7 @@ def t_SNE(data, dim=2, perp=30, with_normalize=False):
         data = get_normalize(data)
 
     data = np.array(data)
-    tsne = TSNE(n_components=dim, init='pca', perplexity=perp, method='exact')
+    tsne = TSNE(n_components=dim, init='pca', perplexity=perp)
     tsne.fit_transform(data)
 
     return tsne.embedding_

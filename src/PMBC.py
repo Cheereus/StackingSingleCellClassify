@@ -21,13 +21,16 @@ print(X.shape)
 print(datetime.datetime.now())
 
 # t-SNE
-dim_data = t_SNE(X, perp=30, with_normalize=False)
+dim_data = t_SNE(X, perp=50, with_normalize=True)
+# PCA
+# dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
 # get two coordinates
 x = [i[0] for i in dim_data]
 y = [i[1] for i in dim_data]
 
 # get color list based on labels
-colors = get_color(labels)
+default_colors = ['b', 'g', 'r', 'm', 'y', 'k']
+colors = get_color(labels, default_colors)
 
 # plot
 draw_scatter(x, y, labels, colors)
