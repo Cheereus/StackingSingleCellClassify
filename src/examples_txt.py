@@ -21,14 +21,14 @@ print(len(labels))
 X = read_from_txt('data/human_islets.txt')
 X = X.T[1:, 1:].astype(np.float64)
 print(X.shape)
-joblib.dump(X, 'datasets/human_islets.pkl')
-joblib.dump(labels, 'datasets/human_islets_labels.pkl')
+# joblib.dump(X, 'datasets/human_islets.pkl')
+# joblib.dump(labels, 'datasets/human_islets_labels.pkl')
 # dimenison reduction
 # t-SNE
-dim_data = t_SNE(X, perp=5, with_normalize=True)
+# dim_data = t_SNE(X, perp=5, with_normalize=True)
 
 # PCA
-# dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
+dim_data, ratio, result = get_pca(X, c=2, with_normalize=True)
 
 # get two coordinates
 x = [i[0] for i in dim_data]

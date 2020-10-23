@@ -45,7 +45,6 @@ def SimMutual(X):
             sim_mutual[i][j] = mu
             sim_mutual[j][i] = mu
 
-    print(sim_mutual)
     sim_mutual = sim_mutual / max_mi
     for i in range(n_sample):
         sim_mutual[i][i] = 1
