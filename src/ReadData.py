@@ -10,10 +10,12 @@ import scipy.io as scio
 import pandas as pd
 import numpy as np
 
+
 # Read data from `.mat` file
 def read_from_mat(filePath):
     data = scio.loadmat(filePath)
     return data
+
 
 # Read data from `.csv` file
 def read_from_csv(filePath):
@@ -21,13 +23,14 @@ def read_from_csv(filePath):
     array_data = np.array(data)
     return array_data
 
+
 # Read data from `.txt` file
 def read_from_txt(filePath):
     f = open(filePath)
     line = f.readline()
     data_list = []
     while line:
-        num = list(map(str,line.split()))
+        num = list(map(str, line.split()))
         data_list.append(num)
         line = f.readline()
     f.close()
