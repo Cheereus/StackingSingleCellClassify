@@ -27,6 +27,7 @@ def SimCorrelation(X):
 def SimMutual(X):
 
     n_sample, n_feature = X.shape
+    cov_mat = np.cov(X)
     sim_mutual = np.zeros((n_sample, n_sample))
     max_mi = 0
 
@@ -34,9 +35,9 @@ def SimMutual(X):
         for j in range(i, n_sample):
             mu = 0
             if i != j:
-                c1 = np.cov(X[i])
-                c2 = np.cov(X[j])
-                c3 = np.linalg.det(np.cov(X[i], X[j]))
+                c1 = cov_mat[i, i]
+                c2 = cov_mat[j, j]
+                c3 = np.linalg.det(cov_mat[i, j])
                 if c3 < 0:
                     c3 = -c3
                 mu = 0.5 * math.log(c1 * c2 / c3)
