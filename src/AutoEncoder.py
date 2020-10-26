@@ -59,6 +59,7 @@ class AE(keras.Model):
         self.encoder = Sequential([
             layers.Dense(256, activation=tf.nn.relu),
             layers.Dense(128, activation=tf.nn.sigmoid),
+            layers.Dropout(rate=0.2),
             layers.Dense(h_dim)
         ])
 
