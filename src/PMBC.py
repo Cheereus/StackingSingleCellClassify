@@ -13,15 +13,15 @@ for line in dataset[1:]:
     X.append(line[1:])
 X = np.array(X).T.astype(np.float64)[:3694]
 
-# joblib.dump(X, 'datasets/human_islets.pkl')
-# joblib.dump(labels, 'datasets/human_islets_labels.pkl')
+# joblib.dump(X, 'datasets/PBMC.pkl')
+# joblib.dump(labels, 'datasets/PBMC_labels.pkl')
 
 print(labels)
 print(X.shape)
 print(datetime.datetime.now())
 
 # PCA
-dim_data, ratio, result = get_pca(X, c=80, with_normalize=False)
+dim_data, ratio, result = get_pca(X, c=11, with_normalize=False)
 print(sum(ratio))
 # t-SNE
 dim_data = t_SNE(dim_data, perp=40, with_normalize=False)

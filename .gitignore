@@ -3,3 +3,4 @@ __pycache__/
 .idea/
 src/datasets/
 src/ae_images/
+src/ae_output/
