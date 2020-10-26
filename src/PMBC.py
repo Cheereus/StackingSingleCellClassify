@@ -21,7 +21,7 @@ print(X.shape)
 print(datetime.datetime.now())
 
 # PCA
-dim_data, ratio, result = get_pca(X, c=11, with_normalize=False)
+dim_data, ratio, result = get_pca(X, c=20, with_normalize=False)
 print(sum(ratio))
 # t-SNE
 dim_data = t_SNE(dim_data, perp=40, with_normalize=False)

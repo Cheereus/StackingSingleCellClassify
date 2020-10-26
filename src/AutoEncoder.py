@@ -27,7 +27,7 @@ def save_images(imgs, name):
     new_im.save(name)
 
 
-h_dim = 2
+h_dim = 20
 batchsz = 20
 lr = 1e-3
 
