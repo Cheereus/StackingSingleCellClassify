@@ -36,3 +36,8 @@ def read_from_txt(filePath):
     f.close()
     array_data = np.array(data_list)
     return array_data
+
+
+# Save data to `.csv` file
+def data_to_csv(data, filePath):
+    np.savetxt(filePath, data, delimiter=',')

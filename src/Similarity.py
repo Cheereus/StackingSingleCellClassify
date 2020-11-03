@@ -12,6 +12,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 from Metrics import ARI, accuracy
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import AgglomerativeClustering
+from ReadData import data_to_csv
 
 dataset = "Xin_human_islets"
 pic_title = dataset + " with pca 5"
@@ -80,7 +81,9 @@ for i in range(n_steps):
         z.append(ari)
         m_z[j, i] = round(ari, 3)
 
-print(m_z)
+print(m_z.shape)
+
+'''
 # heatmap
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -90,6 +93,7 @@ ax.set_yticks(range(len(range_index)))
 ax.set_yticklabels(list(reversed(range_index)))
 ax.set_xticks(range(len(range_index)))
 ax.set_xticklabels(range_index)
+
 im = ax.imshow(np.flipud(m_z), cmap=plt.cm.hot_r)
 # 增加右侧的颜色刻度条
 plt.colorbar(im)
@@ -99,12 +103,6 @@ plt.title(pic_title)
 ax.set_ylabel('beta')
 ax.set_xlabel('alpha')
 plt.show()
+'''
+data_to_csv(np.flipud(m_z), 'csvs/' + dataset + '.csv')
 
-# fig = plt.figure()
-# ax = Axes3D(fig)
-# ax.plot_trisurf(x, y, z, cmap='rainbow')
-# ax.set_zlabel('ARI')  # 坐标轴
-# ax.set_ylabel('beta')
-# ax.set_xlabel('alpha')
-#
-# plt.show()
