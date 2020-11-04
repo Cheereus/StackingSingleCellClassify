@@ -14,7 +14,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import AgglomerativeClustering
 from ReadData import data_to_csv
 
-dataset = "Xin_human_islets"
+dataset = "Yan_human"
 pic_title = dataset + " with pca 5"
 X = joblib.load('datasets/' + dataset + '.pkl')
 labels = joblib.load('datasets/' + dataset + '_labels.pkl')
@@ -40,48 +40,49 @@ def calc_and_output(sim):
     return labels_predict, ARI(labels, labels_predict)
 
 
-# sim_data = Similarity(dim_data, alpha=0.3, beta=0.6)
-# pred, ari = calc_and_output(sim_data)
-# rel = RelevanceMatrix(pred)
-# sim_next = 0.6 * sim_data + 0.3 * rel
-# l0 = len(sim_next[sim_next != 0])
-# while l0 != 0:
-#     print(l0)
-#     sim_data = Similarity(sim_next, alpha=0.3, beta=0.6)
-#     pred, ari = calc_and_output(sim_data)
-#     rel = RelevanceMatrix(pred)
-#     sim_next = 0.6 * sim_data + 0.3 * rel
-#     l0 = len(sim_next[sim_next > 0])
+sim_data = Similarity(dim_data, alpha=0.6, beta=0.3)
+pred, ari = calc_and_output(sim_data)
+rel = RelevanceMatrix(pred)
+sim_next = sim_data
+print(rel.shape)
+l0 = len(sim_next[sim_next > 1e-10])
+while l0 != 0:
+    print('l0:', l0)
+    # print(sim_next, rel)
+    sim_next = 0.5 * sim_next + 0.5 * rel
+    pred, ari = calc_and_output(sim_next)
+    rel = RelevanceMatrix(pred)
+    l0 = len(sim_next[sim_next > 1e-5])
 
 # calc_and_output(sim_dis)
 # calc_and_output(sim_cor)
 # calc_and_output(sim_mu)
-
-x = []
-y = []
-z = []
-step = 0.1
-n_steps = int(1 / step) + 1
-m_z = np.zeros((n_steps, n_steps))
-
-range_index = np.arange(0, 1.1, 0.1)
-
-range_index = [round(i, 2) for i in range_index]
-
-for i in range(n_steps):
-
-    for j in range(n_steps - i):
-
-        alpha = step * i
-        beta = step * j
-        sim_data = Similarity(dim_data, alpha=alpha, beta=beta)
-        _, ari = calc_and_output(sim_data)
-        x.append(alpha)
-        y.append(beta)
-        z.append(ari)
-        m_z[j, i] = round(ari, 3)
-
-print(m_z.shape)
+#
+# x = []
+# y = []
+# z = []
+# step = 0.1
+# n_steps = int(1 / step) + 1
+# m_z = np.zeros((n_steps, n_steps))
+#
+# range_index = np.arange(0, 1.1, 0.1)
+#
+# range_index = [round(i, 2) for i in range_index]
+#
+# for i in range(n_steps):
+#
+#     for j in range(n_steps - i):
+#
+#         alpha = step * i
+#         beta = step * j
+#         sim_data = Similarity(dim_data, alpha=alpha, beta=beta)
+#         _, ari = calc_and_output(sim_data)
+#         x.append(alpha)
+#         y.append(beta)
+#         z.append(ari)
+#         m_z[j, i] = round(ari, 3)
+#
+# print(m_z.shape)
 
 '''
 # heatmap
@@ -103,6 +104,6 @@ plt.title(pic_title)
 ax.set_ylabel('beta')
 ax.set_xlabel('alpha')
 plt.show()
-'''
 data_to_csv(np.flipud(m_z), 'csvs/' + dataset + '.csv')
+'''
 
