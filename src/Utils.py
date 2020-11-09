@@ -50,7 +50,7 @@ def draw_scatter(x, y, labels, colors):
                 xi.append(x[j])
                 yi.append(y[j])
                 ci.append(colors[j])
-        plt.scatter(xi, yi, c=ci, label=i, s=2)
+        plt.scatter(xi, yi, c=ci, label=i, s=5)
         t += 1
 
     plt.legend(loc='best')
