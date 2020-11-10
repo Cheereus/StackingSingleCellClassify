@@ -26,7 +26,7 @@ def t_SNE(data, dim=2, perp=30, with_normalize=False):
 # PCA
 def get_pca(data, c=3, with_normalize=False):
     if with_normalize:
-        X = get_normalize(data)
+        data = get_normalize(data)
 
     pca_result = PCA(n_components=c)
     pca_result.fit(data)
