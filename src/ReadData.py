@@ -24,6 +24,13 @@ def read_from_csv(filePath):
     return array_data
 
 
+# Read data from `.tsv` file
+def read_from_tsv(filePath):
+    data = pd.read_csv(filePath, header=None, low_memory=False, sep='\t')
+    array_data = np.array(data)
+    return array_data
+
+
 # Read data from `.txt` file
 def read_from_txt(filePath):
     f = open(filePath)
