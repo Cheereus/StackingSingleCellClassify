@@ -5,3 +5,5 @@ src/datasets/
 src/ae_images/
 src/ae_output/
 src/data/*.mat
+src/.ipynb_checkpoints
+*.ipynb
