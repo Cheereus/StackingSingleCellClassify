@@ -40,12 +40,3 @@ def Batch_2(data, labels, batch_size=10, drop_last=False, shuffle=True):
 
             idx += 1
 
-
-PBMC = joblib.load('datasets/Biase_mouse.pkl')
-PBMC_labels = joblib.load('datasets/Biase_mouse_labels.pkl')
-print(PBMC.shape)
-dataLoader = Batch_2(PBMC, PBMC_labels)
-for k in range(999999):
-    next(dataLoader)
-
-
