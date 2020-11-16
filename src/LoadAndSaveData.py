@@ -9,6 +9,6 @@ genes = [i for i in data.T[0][1:]]
 print(len(genes), len(labels))
 print(data[1:, 1:].shape)
 
-joblib.dump(data.T, 'datasets/Chu_cell_time.pkl')
+joblib.dump(data[1:, 1:].T.astype(np.float64), 'datasets/Chu_cell_time.pkl')
 joblib.dump(labels, 'datasets/Chu_cell_time_labels.pkl')
 joblib.dump(genes, 'datasets/Chu_cell_time_genes.pkl')
