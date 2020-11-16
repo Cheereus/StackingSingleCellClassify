@@ -13,25 +13,12 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 assert tf.__version__.startswith('2.')
 
 
-def save_images(imgs, name):
-    new_im = Image.new('L', (280, 280))
-
-    index = 0
-    for i in range(0, 280, 28):
-        for j in range(0, 280, 28):
-            im = imgs[index]
-            im = Image.fromarray(im, mode='L')
-            new_im.paste(im, (i, j))
-            index += 1
-
-    new_im.save(name)
-
-
 h_dim = 20
 batchsz = 20
 lr = 1e-3
 
 x_train = joblib.load('datasets/PBMC.pkl')
+n_cells, n_genes = x_train.shape
 y_train = np.array(joblib.load('datasets/PBMC_labels.pkl'))
 # (x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
 x_train = x_train.astype(np.float32)
@@ -49,7 +36,6 @@ train_db = train_db.batch(batchsz)
 
 print(x_train.shape)
 
-
 class AE(keras.Model):
 
     def __init__(self):
@@ -57,7 +43,8 @@ class AE(keras.Model):
 
         # Encoders
         self.encoder = Sequential([
-            layers.Dense(256, activation=tf.nn.relu),
+            layers.Dense(512, activation=tf.nn.leaky_relu),
+            layers.Dense(256, activation=tf.nn.leaky_relu),
             layers.Dense(128, activation=tf.nn.sigmoid),
             layers.Dropout(rate=0.2),
             layers.Dense(h_dim)
@@ -66,8 +53,9 @@ class AE(keras.Model):
         # Decoders
         self.decoder = Sequential([
             layers.Dense(128, activation=tf.nn.sigmoid),
-            layers.Dense(256, activation=tf.nn.relu),
-            layers.Dense(6713)
+            layers.Dense(256, activation=tf.nn.leaky_relu),
+            layers.Dense(512, activation=tf.nn.leaky_relu),
+            layers.Dense(n_genes)
         ])
 
     def call(self, inputs, training=None):
@@ -80,7 +68,7 @@ class AE(keras.Model):
 
 
 model = AE()
-model.build(input_shape=(None, 6713))
+model.build(input_shape=(None, n_genes))
 model.summary()
 
 optimizer = tf.optimizers.Adam(lr=lr)
@@ -90,7 +78,7 @@ for epoch in range(100):
     for step, x in enumerate(train_db):
 
         # [b, 28, 28] => [b, 784]
-        x = tf.reshape(x, [-1, 6713])
+        x = tf.reshape(x, [-1, n_genes])
 
         with tf.GradientTape() as tape:
             x_rec_logits, _ = model(x)
