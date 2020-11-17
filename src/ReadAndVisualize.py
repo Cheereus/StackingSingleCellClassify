@@ -11,9 +11,8 @@ dim_data = t_SNE(data, perp=40, with_normalize=True)
 
 x = [i[0] for i in dim_data]
 y = [i[1] for i in dim_data]
-# get color list based on labels
+
 default_colors = ['c', 'b', 'g', 'r', 'm', 'y', 'c', 'k']
 colors = get_color(labels, default_colors)
 
-# plot
 draw_scatter(x, y, labels, colors)
