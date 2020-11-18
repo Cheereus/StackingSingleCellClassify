@@ -43,17 +43,17 @@ def calc_and_output(sim):
 sim_data = Similarity(dim_data, alpha=0.6, beta=0.3)
 pred, ari = calc_and_output(sim_data)
 rel = RelevanceMatrix(pred)
+print(len(rel[rel > 1e-10]))
 sim_next = sim_data
-print(rel.shape)
 l0 = len(sim_next[sim_next > 1e-10])
+
 while l0 != 0:
     print('l0:', l0)
     # print(sim_next, rel)
-    sim_next = 0.5 * sim_next + 0.5 * rel
+    sim_next = 0.01 * sim_next + 0.99 * rel
     pred, ari = calc_and_output(sim_next)
     rel = RelevanceMatrix(pred)
     l0 = len(sim_next[sim_next > 1e-5])
-
 # calc_and_output(sim_dis)
 # calc_and_output(sim_cor)
 # calc_and_output(sim_mu)
