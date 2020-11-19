@@ -36,6 +36,7 @@ train_db = train_db.batch(batchsz)
 
 print(x_train.shape)
 
+
 class AE(keras.Model):
 
     def __init__(self):
