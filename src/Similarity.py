@@ -5,7 +5,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
 
 from Distance import SimDistance, SimCorrelation, SimMutual, Similarity, RelevanceMatrix
-from DimensionReduction import t_SNE, get_pca
+from DimensionReduction import t_SNE, get_pca, get_normalize
 import numpy as np
 from Clustering import hca, hca_dendrogram, hca_labels, k_means
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
@@ -52,7 +52,7 @@ while l0 != 0:
     # print(sim_next, rel)
     sim_next = 0.01 * sim_next + 0.99 * rel
     pred, ari = calc_and_output(sim_next)
-    rel = RelevanceMatrix(pred)
+    rel = get_normalize(RelevanceMatrix(pred))
     l0 = len(sim_next[sim_next > 1e-5])
 # calc_and_output(sim_dis)
 # calc_and_output(sim_cor)
