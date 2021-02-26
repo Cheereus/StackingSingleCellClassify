@@ -24,8 +24,8 @@ labels = read_from_mat('data/corr/Labels_islet.mat')['Labels']
 labels = [i[0][0] for i in labels]
 print(X.shape)
 
-# joblib.dump(X, 'datasets/Biase_mouse.pkl')
-# joblib.dump(labels, 'datasets/Biase_mouse_labels.pkl')
+joblib.dump(X, 'datasets/human_islet.pkl')
+joblib.dump(labels, 'datasets/human_islet_labels.pkl')
 
 # get color list based on labels
 colors = get_color(labels)
